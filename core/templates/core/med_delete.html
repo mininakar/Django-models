@@ -1,0 +1,29 @@
+{% extends 'core/base.html' %}
+{% block content %}
+<html lang =ru>
+    <style>
+        body {
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif; }
+.button:hover {background-color: #479eab}
+.button:active {
+  background-color: #479eab;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px); }
+</style>
+
+<head>
+  <meta charset = "utf-8">
+ <title> Добавить препарат</title> <!-- Название вкладки -->
+</head>
+
+
+  <form action="{% url 'core:med_delete' pk=medicines.pk %}" method = "post">
+    {% csrf_token %}
+    {{form.as_p}}
+    <p> Удалить препарат {{ medicines.name }} из базы данных?</p>
+    <button class = "button" type ="submit"> Удалить</button>
+    <button class = "button" type ="reset"> Отмена</button>
+  </form>
+
+{% endblock %}
